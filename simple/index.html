@@ -41,7 +41,7 @@
     }
 
     update(); // 初回の表示更新（読み込み直後）
-    setInterval(update, 500); // 毎秒更新（0.5秒ごとにupdateを呼び出し）
+    setInterval(update, 1000 - Date.now() % 1000); // 毎秒更新（インターバルをms単位で算出してupdateを呼び出し）
   </script>
 </body>
 </html>

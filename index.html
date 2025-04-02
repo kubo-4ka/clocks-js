@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>時計アプリ - 選択ページ</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: #ccc;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #eee;
+    }
+
+    .link-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    a.clock-link {
+      display: block;
+      text-align: center;
+      padding: 15px 20px;
+      background-color: #1e1e1e;
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    a.clock-link:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    footer a {
+      color: #bb86fc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Simple or Custom</h1>
+  <div class="link-container">
+    <a href="./simple/index.html" class="clock-link">🕒 Simple Clock</a>
+    <a href="./custom/index.html" class="clock-link">⚙️ Custom Clock</a>
+  </div>
+  <footer> <a href="https://qiita.com/kubo4ka" target="_blank">about</a></footer>
+</body>
+
+</html>

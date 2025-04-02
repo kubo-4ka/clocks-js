@@ -1,0 +1,179 @@
+body {
+  margin: 0;
+  background-color: black;
+  color: #dddddd;
+  font-family: sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+/* 時計本体 */
+.clock-container {
+  text-align: center;
+  cursor: pointer;
+}
+
+.time {
+  /* font-size: 8vw; */
+  margin-bottom: 1vh;
+}
+
+/* .date {
+  font-size: 4vw;
+} */
+
+/* ハンバーガーメニュー */
+.hamburger {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* 各線のスタイル */
+.hamburger span {
+  display: block;
+  height: 4px;
+  background-color: #dddddd;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* 開いた時のアニメーション（active） */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* ハンバーガーメニュー */
+#menu-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px; /* ← vwではなく固定サイズに変更 */
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* メニューパネル */
+#menu-panel {
+  position: absolute;
+  top: 0;
+  left: -100%; /* ← 完全に非表示（画面の外）にする */
+  width: 250px;
+  height: 100%; /* ← 100vh ではなく 100% にすることでアドレスバー回避 */
+  max-height: 100dvh; /* ← モダンブラウザ対応で安全に制限 */
+  background-color: #222;
+  color: #dddddd;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+  transition: left 0.3s ease;
+  z-index: 99;
+  overflow-y: auto; /* ← 縦スクロールを有効に */
+  -webkit-overflow-scrolling: touch; /* ← iOS で慣性スクロール対応 */
+  padding-bottom: 80px;
+}
+
+.setting-group button#resetSettings {
+  margin-bottom: 60px; /* デフォルトに戻すボタンの下に余白 */
+}
+
+/* 表示時に左からスライドイン */
+#menu-panel.active {
+  left: 0;
+}
+
+.setting-group {
+  margin-bottom: 15px;
+}
+
+.setting-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.setting-group input,
+.setting-group select {
+  width: 100%;
+}
+
+.setting-group input[type="color"] {
+  border: 1px solid #555;
+  background-color: #111;
+  height: 30px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dark-select {
+  background-color: #111;
+  color: #dddddd;
+  border: 1px solid #555;
+}
+
+.setting-group button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 6px;
+  background-color: #333;
+  color: #dddddd;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.setting-group button:hover {
+  background-color: #555;
+}
+
+.setting-group button#resetSettings {
+  margin-bottom: 60px;
+}
+
+#timezoneIdDisplay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+  color: #aaa;
+  z-index: 90;
+}
+
+#notification {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #444;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 200;
+}
+
+#notification.show {
+  opacity: 0.9;
+}

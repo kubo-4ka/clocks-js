@@ -1,0 +1,47 @@
+<!DOCTYPE html> <!-- HTML5文書であることを宣言 -->
+<html lang="ja"> <!-- ページの言語を日本語に指定 -->
+<head>
+  <meta charset="UTF-8" /> <!-- 文字コードをUTF-8に設定（日本語など対応） -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- レスポンシブ対応（スマホでも拡大縮小しない） -->
+  <title>Simple Clock</title> <!-- タブに表示されるタイトル -->
+  <style>
+    body {
+      margin: 0; /* 余白なしで全画面表示 */
+      background: black; /* 背景を黒に */
+      color: white; /* 文字色を白に */
+      font-family: sans-serif; /* 読みやすいフォントに */
+      display: flex; /* Flexboxで中央寄せレイアウト */
+      flex-direction: column; /* 縦方向に積む（時刻→日付） */
+      justify-content: center; /* 縦方向中央揃え */
+      align-items: center; /* 横方向中央揃え */
+      height: 100vh; /* ビューポート全体の高さを使用 */
+    }
+    #time {
+      font-size: 10vw; /* 画面幅に応じて大きなフォント */
+    }
+    #date {
+      font-size: 5vw; /* 日付は少し小さめに */
+    }
+  </style>
+</head>
+<body>
+  <div id="time">00:00:00</div> <!-- 初期表示用の時刻領域（秒まで） -->
+  <div id="date">2025/03/31 MON</div> <!-- 初期表示用の日付・曜日 -->
+  <script>
+    function update() {
+      const now = new Date(); // 現在日時を取得
+      const time = now.toLocaleTimeString('ja-JP', { hour12: false }); // 24時間表記の時刻（例：13:45:22）
+      const y = now.getFullYear(); // 年（例：2025）
+      const m = String(now.getMonth()+1).padStart(2, '0'); // 月（0始まりなので+1し、2桁化）
+      const d = String(now.getDate()).padStart(2, '0'); // 日（2桁化）
+      const w = ['SUN','MON','TUE','WED','THU','FRI','SAT'][now.getDay()]; // 曜日（インデックスで配列から取得）
+
+      document.getElementById('time').textContent = time; // 時刻を画面に表示
+      document.getElementById('date').textContent = `${y}/${m}/${d} ${w}`; // 日付＋曜日を画面に表示
+    }
+
+    update(); // 初回の表示更新（読み込み直後）
+    setInterval(update, 500); // 毎秒更新（0.5秒ごとにupdateを呼び出し）
+  </script>
+</body>
+</html>
